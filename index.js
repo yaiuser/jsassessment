@@ -68,7 +68,7 @@ class Field {
             y = Math.round(Math.random()*(this.cols -1));
         }
 
-        this.field[x][y] = HAT;  /* Hat position set */
+        this.field[x][y] = HAT;                               /* Hat position set */
 
      } 
 
@@ -82,7 +82,7 @@ class Field {
     // Start game
     startGame(){                                                    /* Start the game */
         this.gamePlay = true;
-        this.generateField(this.rows, this.cols, this.perc);                   /* Generate the field first */
+        this.generateField(this.rows, this.cols, this.perc);        /* Generate the field first */
         this.field[0][0] = PLAYER;                                  /* Set the start position of the character */        
         this.printField();                                          /* Print the field once */
         this.updateGame();                                          /* Update the game once */
@@ -134,7 +134,7 @@ class Field {
         // !! FOR THE ASSESSMENT
         // TODO FIRST update the player's position in the field
 
-        switch (position) {                      /* Update the position of the player */
+        switch (position) {                                         /* Update the position of the player in userPosition array */
             case "u":
                 currentPosition[0] -= 1;
                 break;
@@ -149,21 +149,21 @@ class Field {
                 break;
         }
 
-        // TODO THEN check if the player has gotten out of bounds - if yes (LOSE) and endGame()
+        // TODO THEN check if the player has gotten out of bounds - if yes (LOSE) and endGame(); i.e. position is lesser or greater than number of rows and columns
         if(currentPosition[0] < 0 || currentPosition[0] >= this.rows || currentPosition[1] < 0 || currentPosition[1] >= this.cols ){
             console.log(OUT_BOUND);
             console.log(LOSE);
             this.endGame();
         }
 
-        // TODO THEN check if the player has fallen into hole - if yes (LOSE) and endGame()
+        // TODO THEN check if the player has fallen into hole - if yes (LOSE) and endGame(); i.e. position has a hole
         if(this.field[currentPosition[0]][currentPosition[1]] === HOLE){
             console.log(INTO_HOLE);
             console.log(LOSE);
             this.endGame();
         }
 
-        // TODO THEN check if the player has found the hat - if yes (WIN) and endGame()
+        // TODO THEN check if the player has found the hat - if yes (WIN) and endGame() i.e. position has a hat
         if(this.field[currentPosition[0]][currentPosition[1]] === HAT){
             console.log(WIN);
             this.endGame();
